@@ -18,6 +18,7 @@
 
 #pragma once
 
+#include "qwebengine_init.h"
 #include "qwebengine_string.hpp"
 #include "qwebengine_protected.hpp"
 #include "qwebengine_context.hpp"

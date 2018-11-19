@@ -2,6 +2,8 @@
 #include "bridge.h"
 #include "eventdispatcher.h"
 
+#include "qwebengine_init.h"
+
 #include <QCoreApplication>
 #include <QDebug>
 #include <QUrl>
@@ -27,7 +29,7 @@ void Realm::setBridge(Bridge *bridge) {
   Q_D(Realm);
   d->bridge = bridge;
 
-  CustomWebPage::instance()->runJavaScript("console.log(\"Setting Realm\"); var Realm = {}; localStorage.clear();", 1);
+  realm::qwebengine::qwebengine_init();
 }
 
 QString Realm::moduleName() { return "Realm"; }

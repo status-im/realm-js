@@ -44,6 +44,11 @@ set(REACT_NATIVE_DESKTOP_EXTERNAL_MODULES_INCLUDE_DIRS ${REACT_NATIVE_DESKTOP_EX
   "${CMAKE_CURRENT_SOURCE_DIR}/../../src/object-store/src/parser"
   "${CMAKE_CURRENT_SOURCE_DIR}/../../src/object-store/src"
   "${CMAKE_CURRENT_SOURCE_DIR}/../../src"
+  "${CMAKE_CURRENT_SOURCE_DIR}/../../src/qwebengine"
   "${CMAKE_CURRENT_SOURCE_DIR}/../../src/object-store/build4/CMakeFiles/realm-core/src/realm-core/build.release/installed/include"
   PARENT_SCOPE)
+
+set(REACT_NATIVE_DESKTOP_EXTERNAL_MODULES_LIBS ${REACT_NATIVE_DESKTOP_EXTERNAL_MODULES_LIBS}
+  "${CMAKE_CURRENT_SOURCE_DIR}/../../src/object-store/build4/CMakeFiles/realm-core/src/realm-core/build.release/installed/lib/librealm.a"
+  libcrypto.a PARENT_SCOPE)
 

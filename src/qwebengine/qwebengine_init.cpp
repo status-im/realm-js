@@ -19,12 +19,14 @@
 #include "qwebengine_init.hpp"
 #include "js_realm.hpp"
 
+#include "bridge.h"
+
 namespace realm {
 namespace qwebengine {
 
-static void init(QVariant exports) {
-
+void qwebengine_init() {
+  CustomWebPage::instance()->runJavaScript("console.log(\"Setting Realm\"); var Realm = {}; localStorage.clear();", 1);
 }
 
-} // node
+} // qwebengine
 } // realm
