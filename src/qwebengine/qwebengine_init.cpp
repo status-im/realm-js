@@ -21,11 +21,27 @@
 
 #include "bridge.h"
 
+#include <QFile>
+
+
 namespace realm {
 namespace qwebengine {
 
 void qwebengine_init() {
-  CustomWebPage::instance()->runJavaScript("console.log(\"Setting Realm\"); var Realm = {}; localStorage.clear();", 1);
+
+    QFile qwebengineInjectJSFile("/home/max/work/realm-js/realm-js/qwebengine_inject.js");
+    if(!qwebengineInjectJSFile.open(QIODevice::ReadOnly))
+        qDebug()<<"Couldn't load qwebengine inject JS file";
+    QString webengineInjectionScript = QString::fromLatin1(qwebengineInjectJSFile.readAll());
+    CustomWebPage::instance()->runJavaScript(webengineInjectionScript, 0);
+
+  //CustomWebPage::instance()->runJavaScript("console.log(\"Setting Realm\"); var Realm = {}; localStorage.clear();", 1);
+
+  /*CustomWebPage::instance()->runJavaScript("new QWebChannel(qt.webChannelTransport, function (channel) {\
+                                           console.log('!!! new QWebChannel is created'); \
+                                           var JSobject = channel.objects.RealmTest; \
+                                           console.log('Custom JSObject= ' + JSobject); \
+                                       });", 1);*/
 }
 
 } // qwebengine
